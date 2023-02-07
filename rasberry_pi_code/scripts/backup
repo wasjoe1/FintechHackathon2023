@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if grep -qs '/mnt/backup_hd ' /proc/mounts; then
+        echo "It's mounted."
+        rsync -a --delete --quiet /home/jay/repos /mnt/backup_hd/shrekpapa/ --log-file=/home/jay/logs/backup_logs
+        rsync -a --delete --quiet /srv/nfs /mnt/backup_hd/shrekpapa/ --log-file=/home/jay/logs/backup_logs
+    else
+        echo "It's not mounted."
+fi
+

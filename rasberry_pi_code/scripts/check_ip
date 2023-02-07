@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Check to see if a pipe exists on stdin.
+getip() {
+    dig +short myip.opendns.com @resolver1.opendns.com -4
+}
+renewip() {
+    ip=$(dig +short myip.opendns.com @resolver1.opendns.com -4) 
+    echo $ip > /home/pi/pub_ip
+    /home/pi/scripts/msg $ip
+    echo $(date) $ip >> /home/pi/ip_log
+}
+diff pub_ip <(getip) || renewip

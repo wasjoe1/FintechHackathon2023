@@ -1,0 +1,2 @@
+#!/bin/sh
+wakeonlan d8:cb:8a:23:87:5d

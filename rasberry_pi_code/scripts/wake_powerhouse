@@ -1,0 +1,2 @@
+#!/bin/sh
+wakeonlan 2c:f0:5d:d5:86:80

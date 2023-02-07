@@ -1,0 +1,9 @@
+#!/bin/sh
+if [ -z "$2" ]
+then
+    ffmpeg -i "$1" -c copy -bsf:a aac_adtstoasc video.mp4
+else
+    ffmpeg -i "$1" -c copy -bsf:a aac_adtstoasc $2
+fi
+
+

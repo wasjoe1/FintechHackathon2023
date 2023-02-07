@@ -1,0 +1,17 @@
+#!/bin/sh
+
+if [ ! $# -eq 1 ]; then 
+    echo "Usage : touch_repo <repo_name>"
+    exit 1
+fi
+
+echo -n "Confirm create repo $1.git? (y/N) "
+read res
+if [ $res != 'y' ]; then exit 0; fi
+
+repo_path=/home/jay/repos
+
+git init --bare "$repo_path/$1.git"
+touch $repo_path/$1.git/git-daemon-export-ok && echo "Finished creating git-daemon-export-ok"
+
+echo  "done."

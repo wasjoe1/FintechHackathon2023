@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# Check to see if a pipe exists on stdin.
+if [ ! -z "$1" ]; then
+	curl -s -X POST -d "chat_id=53033508&text=$1" https://api.telegram.org/bot1927794958:AAE3BrRDOsEqXV6I50qNCKOvXtrYEOtfA7k/sendMessage
+else
+	if [ -p /dev/stdin ]; then
+		curl -s -X POST -d "chat_id=53033508&text=$(cat)" https://api.telegram.org/bot1927794958:AAE3BrRDOsEqXV6I50qNCKOvXtrYEOtfA7k/sendMessage
+	else
+		echo "No input given!"
+	fi
+fi
